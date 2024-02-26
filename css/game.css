@@ -17,6 +17,7 @@
     transform: rotate(360deg);
   }
 }
+
 #container {
   display: none;
   width: 700px;
@@ -88,7 +89,20 @@ h3 {
   transition: all 0.2s ease-in;
 }
 #next-button:hover,
-#finish-button:hover{
-    background-color: #6757d9;
-    color: #fff;
+#finish-button:hover {
+  background-color: #6757d9;
+  color: #fff;
+}
+
+.correct {
+  background-color: #5bd7bc;
+}
+.incorrect {
+  background-color: #fe6681;
+}
+.correct:hover {
+  background-color: #5bd7bc;
+}
+.incorrect:hover {
+  background-color: #fe6681;
 }
