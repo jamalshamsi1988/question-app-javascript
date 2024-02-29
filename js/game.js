@@ -73,8 +73,8 @@ const checkAnswer = (event, index) => {
 };
 
 const nextHandler = () => {
-  questionIndex++;
   if (questionIndex < formattedData.length) {
+    questionIndex++;
     isAccepted = true;
     removeClassList();
     showQuestion();
