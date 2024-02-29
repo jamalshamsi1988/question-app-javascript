@@ -4,12 +4,10 @@ const questionText = document.getElementById("question-text");
 const answerList = document.querySelectorAll(".answer-text");
 const scoreText = document.getElementById("score");
 const nextButton = document.getElementById("next-button");
+const finishButton = document.getElementById("finish-button");
 const questionNumber = document.getElementById("question-number");
 
-
-
-
-let isAccepted=true;
+let isAccepted = true;
 
 const URL =
   "https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple";
@@ -17,8 +15,8 @@ const URL =
 let formattedData = null;
 let questionIndex = 0;
 let correctAnswer = null;
-let score=0;
-let SCORE_BOUNS=10;
+let score = 0;
+let SCORE_BOUNS = 10;
 
 const formatData = (questionData) => {
   const result = questionData.map((item) => {
@@ -49,7 +47,7 @@ const start = () => {
 };
 
 const showQuestion = () => {
-  questionNumber.innerText=questionIndex +1;
+  questionNumber.innerText = questionIndex + 1;
   const { question, answers, correctAnswerIndex } =
     formattedData[questionIndex];
   correctAnswer = correctAnswerIndex;
@@ -60,37 +58,43 @@ const showQuestion = () => {
   });
 };
 const checkAnswer = (event, index) => {
-  if(!isAccepted) return;
+  if (!isAccepted) return;
   isAccepted = false;
 
   const isCorrect = index === correctAnswer ? true : false;
   if (isCorrect) {
     event.target.classList.add("correct");
-    score +=SCORE_BOUNS;
-    scoreText.innerText=score;
+    score += SCORE_BOUNS;
+    scoreText.innerText = score;
   } else {
     event.target.classList.add("incorrect");
     answerList[correctAnswer].classList.add("correct");
   }
 };
 
-const nextHandler=()=>{
+const nextHandler = () => {
   questionIndex++;
- if(questionIndex < formattedData.length -1){
-  isAccepted=true;
-  removeClassList();
-  showQuestion();
- }else{
-  window.location.assign("/finish.html")
- }
-}
+  if (questionIndex < formattedData.length) {
+    isAccepted = true;
+    removeClassList();
+    showQuestion();
+  } else {
+    finishHandler();
+  }
+};
 
-const removeClassList=()=>{
-  answerList.forEach(button => button.className = "answer-text")
-}
+const finishHandler = () => {
+  localStorage.setItem("score", JSON.stringify(score));
+  window.location.assign("/finish.html");
+};
+const removeClassList = () => {
+  answerList.forEach((button) => (button.className = "answer-text"));
+};
 
 window.addEventListener("load", fetchData);
-nextButton.addEventListener("click",nextHandler)
+nextButton.addEventListener("click", nextHandler);
+finishButton.addEventListener("click", finishHandler);
+
 answerList.forEach((button, index) => {
   button.addEventListener("click", (event) => checkAnswer(event, index));
 });
