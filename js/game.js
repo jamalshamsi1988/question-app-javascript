@@ -2,6 +2,9 @@ const loader = document.getElementById("loader");
 const container = document.getElementById("container");
 const questionText = document.getElementById("question-text");
 const answerList = document.querySelectorAll(".answer-text");
+const scoreText = document.getElementById("score");
+
+let isAccepted=true;
 
 const URL =
   "https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple";
@@ -9,6 +12,8 @@ const URL =
 let formattedData = null;
 let questionIndex = 0;
 let correctAnswer = null;
+let score=0;
+let SCORE_BOUNS=10;
 
 const formatData = (questionData) => {
   const result = questionData.map((item) => {
@@ -49,9 +54,14 @@ const showQuestion = () => {
   });
 };
 const checkAnswer = (event, index) => {
+  if(!isAccepted) return;
+  isAccepted = false;
+
   const isCorrect = index === correctAnswer ? true : false;
   if (isCorrect) {
     event.target.classList.add("correct");
+    score +=SCORE_BOUNS;
+    scoreText.innerText=score;
   } else {
     event.target.classList.add("incorrect");
     answerList[correctAnswer].classList.add("correct");
