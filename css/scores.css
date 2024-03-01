@@ -23,6 +23,7 @@ li span:first-child {
   line-height: 35px;
   color: #fff;
   border-radius: 12px;
+  text-align: center;
 }
 
 li p {
@@ -32,30 +33,29 @@ li p {
   color: rgb(86, 86, 86);
 }
 
-li span:last-child{
-    background-color: #eeedfb;
-    width: 35px;
-    height: 35px;
-    line-height: 35px;
-    text-align: center;
-    color: #6757d9;
-    font-size: 1.2rem;
-    border-radius: 12px;
+li span:last-child {
+  background-color: #eeedfb;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  color: #6757d9;
+  font-size: 1.2rem;
+  border-radius: 12px;
 }
-a{
-    color: #6757d9;
-    font-size: 1rem;
-    background-color: #eeedfb;
-    border: 2px solid #6757d9;
-    border-radius: 15px;
-    padding: 8px 15px;
-    margin: 20px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.2s ease-in;
-
+a {
+  color: #6757d9;
+  font-size: 1rem;
+  background-color: #eeedfb;
+  border: 2px solid #6757d9;
+  border-radius: 15px;
+  padding: 8px 15px;
+  margin: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease-in;
 }
-a:hover{
-    background-color: #6757d9;
-    color: #fff;
+a:hover {
+  background-color: #6757d9;
+  color: #fff;
 }
